@@ -61,7 +61,6 @@
         <dependency>
             <groupId>com.july.cloud</groupId>
             <artifactId>july-starter-redis</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

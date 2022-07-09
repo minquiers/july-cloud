@@ -9,12 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>july-starter</artifactId>
+    <artifactId>july-biz-framework</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>july-starter-redis</module>
-        <module>july-starter-core</module>
-        <module>july-starter-mybatisplus</module>
+        <module>july-biz-dictionary</module>
     </modules>
 
 

@@ -41,6 +41,10 @@
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-io.version>2.11.0</commons-io.version>
         <lombok.version>1.18.24</lombok.version>
+        <swagger.version>2.10.5</swagger.version>
+        <swagger.models.version>1.6.3</swagger.models.version>
+        <swagger-annotations.version>1.6.3</swagger-annotations.version>
+        <knife4j.version>2.0.9</knife4j.version>
     </properties>
 
     <dependencyManagement>
@@ -121,11 +125,6 @@
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-generator</artifactId>
-                <version>${mybatis.plus.generator.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${dynamic-datasource-spring-boot-starter.version}</version>
             </dependency>
@@ -200,7 +199,43 @@
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson2.version}</version>
             </dependency>
-
+            <!-- jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson-bom.version}</version>
+            </dependency>
+            <!--Swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.models.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-aggregation-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
 
 
             <!-- july cloud -->
@@ -217,6 +252,11 @@
             <dependency>
                 <groupId>com.july.cloud</groupId>
                 <artifactId>july-starter-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.july.cloud</groupId>
+                <artifactId>july-starter-mybatisplus</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

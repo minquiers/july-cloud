@@ -13,6 +13,7 @@
         <module>july-tools</module>
         <module>july-gateway</module>
         <module>july-commons</module>
+        <module>july-biz-framework</module>
     </modules>
 
     <name>july-cloud</name>
