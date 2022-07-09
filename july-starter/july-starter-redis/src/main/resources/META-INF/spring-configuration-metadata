@@ -1,0 +1,91 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis",
+      "type": " com.july.cloud.redis.config.properties.RedisConfigurationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.host",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.port",
+      "type": "int"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.ssl",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.timeOut",
+      "type": "long"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.database",
+      "type": "int"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.enabled",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.pool.minIdle",
+      "type": "int"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.pool.maxIdle",
+      "type": "int"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.pool.maxActive",
+      "type": "int"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.pool.maxWait",
+      "type": "int"
+    },{
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.cluster.commandTimeout",
+      "type": "int"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.cluster.nodes",
+      "type": "java.util.List<String>"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.sentinel.master",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.sentinel.nodes",
+      "type": "java.util.List<String>"
+    },
+    {
+      "sourceType": " com.july.cloud.redis.config.properties.RedisConfigurationProperties",
+      "name": "spring.redis.pool.password",
+      "type": "java.lang.String"
+    }
+  ]
+}

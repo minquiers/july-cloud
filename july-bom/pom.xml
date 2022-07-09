@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.minquiers.platform</groupId>
+    <groupId>com.july.cloud.platform</groupId>
     <artifactId>july-bom</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
@@ -31,12 +31,12 @@
         <mybatis.plus.version>3.5.2</mybatis.plus.version>
         <dynamic-datasource-spring-boot-starter.version>3.5.1</dynamic-datasource-spring-boot-starter.version>
         <mybatis-spring.version>2.0.7</mybatis-spring.version>
-        <jjwt.version>0.11.5</jjwt.version>
+        <jjwt.version>0.9.0</jjwt.version>
         <mysql.connector.version>8.0.29</mysql.connector.version>
         <postgresql.connector.version>42.4.0</postgresql.connector.version>
         <redisson.version>3.17.4</redisson.version>
-        <jedis.version>4.2.3</jedis.version>
-        <fastjson.version>2.0.8</fastjson.version>
+        <jedis.version>3.9.0</jedis.version>
+        <fastjson2.version>2.0.8</fastjson2.version>
         <hutool-all.version>5.8.4</hutool-all.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-io.version>2.11.0</commons-io.version>
@@ -134,15 +134,10 @@
                 <artifactId>mybatis-spring</artifactId>
                 <version>${mybatis-spring.version}</version>
             </dependency>
-            <!-- JWT -->
+            <!-- java-jwt -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jjwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
+                <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
             <!-- MySql -->
@@ -168,12 +163,6 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
-            </dependency>
-            <!-- fastjson -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
             </dependency>
             <!-- hutool -->
             <dependency>
@@ -205,6 +194,32 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+            <!-- fastjson2 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+
+
+
+            <!-- july cloud -->
+            <dependency>
+                <groupId>com.july.cloud</groupId>
+                <artifactId>july-common-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.july.cloud</groupId>
+                <artifactId>july-starter-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.july.cloud</groupId>
+                <artifactId>july-starter-redis</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

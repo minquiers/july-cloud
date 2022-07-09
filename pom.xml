@@ -4,13 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.minquiers</groupId>
+    <groupId>com.july.cloud</groupId>
     <artifactId>july-cloud</artifactId>
     <version>1.0.0</version>
     <modules>
         <module>july-bom</module>
         <module>july-starter</module>
         <module>july-tools</module>
+        <module>july-gateway</module>
+        <module>july-commons</module>
     </modules>
 
     <name>july-cloud</name>
@@ -29,7 +31,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.minquiers.platform</groupId>
+                <groupId>com.july.cloud.platform</groupId>
                 <artifactId>july-bom</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>

@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.july.cloud.redis.config.CommonRedisAutoConfiguration,\
+com.july.cloud.redis.config.RedisLockAutoConfiguration
