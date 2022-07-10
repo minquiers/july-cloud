@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.july.cloud.framework.backend.mapper.SysRoleMenuMapper">
+
+    <resultMap id="BaseResultMap" type="com.july.cloud.framework.backend.entity.SysRoleMenuEntity">
+            <id property="roleId" column="role_id" jdbcType="VARCHAR"/>
+            <id property="menuId" column="menu_id" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="CHAR"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createAt" column="create_at" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateAt" column="update_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+</mapper>

@@ -253,69 +253,74 @@ DROP TABLE IF EXISTS `sys_role_menu`;
 CREATE TABLE `sys_role_menu` (
                                  `role_id` varchar(36) NOT NULL,
                                  `menu_id` varchar(36) NOT NULL,
+                                 `is_deleted` char(1) COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否删除（0正常 1删除,null删除）',
+                                 `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人',
+                                 `create_at` datetime DEFAULT NULL COMMENT '创建时间',
+                                 `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人',
+                                 `update_at` datetime DEFAULT NULL COMMENT '修改时间',
                                  PRIMARY KEY (`role_id`,`menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC COMMENT='角色菜单表';
 
-INSERT INTO `sys_role_menu` VALUES (1, 1000);
-INSERT INTO `sys_role_menu` VALUES (1, 1100);
-INSERT INTO `sys_role_menu` VALUES (1, 1101);
-INSERT INTO `sys_role_menu` VALUES (1, 1102);
-INSERT INTO `sys_role_menu` VALUES (1, 1103);
-INSERT INTO `sys_role_menu` VALUES (1, 1104);
-INSERT INTO `sys_role_menu` VALUES (1, 1200);
-INSERT INTO `sys_role_menu` VALUES (1, 1201);
-INSERT INTO `sys_role_menu` VALUES (1, 1202);
-INSERT INTO `sys_role_menu` VALUES (1, 1203);
-INSERT INTO `sys_role_menu` VALUES (1, 1300);
-INSERT INTO `sys_role_menu` VALUES (1, 1301);
-INSERT INTO `sys_role_menu` VALUES (1, 1302);
-INSERT INTO `sys_role_menu` VALUES (1, 1303);
-INSERT INTO `sys_role_menu` VALUES (1, 1304);
-INSERT INTO `sys_role_menu` VALUES (1, 1305);
-INSERT INTO `sys_role_menu` VALUES (1, 1400);
-INSERT INTO `sys_role_menu` VALUES (1, 1401);
-INSERT INTO `sys_role_menu` VALUES (1, 1402);
-INSERT INTO `sys_role_menu` VALUES (1, 1403);
-INSERT INTO `sys_role_menu` VALUES (1, 1500);
-INSERT INTO `sys_role_menu` VALUES (1, 1501);
-INSERT INTO `sys_role_menu` VALUES (1, 1502);
-INSERT INTO `sys_role_menu` VALUES (1, 1503);
-INSERT INTO `sys_role_menu` VALUES (1, 1504);
-INSERT INTO `sys_role_menu` VALUES (1, 1505);
-INSERT INTO `sys_role_menu` VALUES (1, 2000);
-INSERT INTO `sys_role_menu` VALUES (1, 2100);
-INSERT INTO `sys_role_menu` VALUES (1, 2101);
-INSERT INTO `sys_role_menu` VALUES (1, 2102);
-INSERT INTO `sys_role_menu` VALUES (1, 2200);
-INSERT INTO `sys_role_menu` VALUES (1, 2201);
-INSERT INTO `sys_role_menu` VALUES (1, 2202);
-INSERT INTO `sys_role_menu` VALUES (1, 2203);
-INSERT INTO `sys_role_menu` VALUES (1, 2300);
-INSERT INTO `sys_role_menu` VALUES (1, 2301);
-INSERT INTO `sys_role_menu` VALUES (1, 2400);
-INSERT INTO `sys_role_menu` VALUES (1, 2401);
-INSERT INTO `sys_role_menu` VALUES (1, 2402);
-INSERT INTO `sys_role_menu` VALUES (1, 2403);
-INSERT INTO `sys_role_menu` VALUES (1, 2600);
-INSERT INTO `sys_role_menu` VALUES (1, 2601);
-INSERT INTO `sys_role_menu` VALUES (1, 2602);
-INSERT INTO `sys_role_menu` VALUES (1, 2603);
-INSERT INTO `sys_role_menu` VALUES (1, 2700);
-INSERT INTO `sys_role_menu` VALUES (1, 2701);
-INSERT INTO `sys_role_menu` VALUES (1, 2702);
-INSERT INTO `sys_role_menu` VALUES (1, 2703);
-INSERT INTO `sys_role_menu` VALUES (1, 3000);
-INSERT INTO `sys_role_menu` VALUES (1, 3100);
-INSERT INTO `sys_role_menu` VALUES (1, 3200);
-INSERT INTO `sys_role_menu` VALUES (1, 3300);
-INSERT INTO `sys_role_menu` VALUES (1, 3301);
-INSERT INTO `sys_role_menu` VALUES (1, 3302);
-INSERT INTO `sys_role_menu` VALUES (1, 3303);
-INSERT INTO `sys_role_menu` VALUES (1, 3400);
-INSERT INTO `sys_role_menu` VALUES (1, 4000);
-INSERT INTO `sys_role_menu` VALUES (1, 9999);
-INSERT INTO `sys_role_menu` VALUES (2, 4000);
-INSERT INTO `sys_role_menu` VALUES (2, 9999);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1000);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1100);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1101);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1102);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1103);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1104);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1200);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1201);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1202);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1203);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1300);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1301);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1302);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1303);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1304);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1305);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1400);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1401);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1402);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1403);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1500);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1501);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1502);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1503);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1504);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 1505);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2000);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2100);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2101);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2102);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2200);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2201);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2202);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2203);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2300);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2301);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2400);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2401);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2402);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2403);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2600);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2601);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2602);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2603);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2700);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2701);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2702);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 2703);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3000);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3100);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3200);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3300);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3301);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3302);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3303);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 3400);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 4000);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (1, 9999);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (2, 4000);
+INSERT INTO `sys_role_menu`(role_id,menu_id) VALUES (2, 9999);
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -332,9 +337,9 @@ CREATE TABLE `sys_user` (
                             `lock_flag` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '0-正常，9-锁定',
                             `is_deleted` char(1) COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否删除（0正常 1删除,null删除）',
                             `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建者',
-                            `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                            `create_at` datetime DEFAULT NULL COMMENT '创建时间',
                             `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '更新人',
-                            `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+                            `update_at` datetime DEFAULT NULL COMMENT '修改时间',
                             PRIMARY KEY (`id`),
                             KEY `user_idx1_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户表';
@@ -349,10 +354,15 @@ DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role` (
                                  `user_id` varchar(36)  NOT NULL,
                                  `role_id` varchar(36)  NOT NULL,
+                                 `is_deleted` char(1) COLLATE utf8_general_ci DEFAULT '0' COMMENT '是否删除（0正常 1删除,null删除）',
+                                 `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建人',
+                                 `create_at` datetime DEFAULT NULL COMMENT '创建时间',
+                                 `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '修改人',
+                                 `update_at` datetime DEFAULT NULL COMMENT '修改时间',
                                  PRIMARY KEY (`user_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci ROW_FORMAT=DYNAMIC COMMENT='用户角色表';
 
-INSERT INTO `sys_user_role` VALUES (1, 1);
+INSERT INTO `sys_user_role`(user_id,role_id) VALUES (1, 1);
 
 
 

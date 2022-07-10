@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.july.cloud.framework.backend.mapper.SysMenuMapper">
+
+    <resultMap id="BaseResultMap" type="com.july.cloud.framework.backend.entity.SysMenuEntity">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="permission" column="permission" jdbcType="VARCHAR"/>
+            <result property="path" column="path" jdbcType="VARCHAR"/>
+            <result property="parentId" column="parent_id" jdbcType="BIGINT"/>
+            <result property="icon" column="icon" jdbcType="VARCHAR"/>
+            <result property="sortOrder" column="sort_order" jdbcType="INTEGER"/>
+            <result property="keepAlive" column="keep_alive" jdbcType="CHAR"/>
+            <result property="type" column="type" jdbcType="CHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="CHAR"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createAt" column="create_at" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+            <result property="updateAt" column="update_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,permission,
+        path,parent_id,icon,
+        sort_order,keep_alive,type,
+        is_deleted,create_by,create_at,
+        update_by,update_at
+    </sql>
+</mapper>
