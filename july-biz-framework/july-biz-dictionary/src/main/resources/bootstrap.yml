@@ -3,7 +3,10 @@ server:
   port: 7001
 
 # Spring
-spring: 
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    date-format: yyyy-MM-dd HH:mm:ss
   application:
     # 应用名称
     name: july-dictionary

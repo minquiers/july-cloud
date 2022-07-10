@@ -28,13 +28,6 @@ public class BaseEntity implements Serializable {
     private String createBy;
 
     /**
-     * 创建部门
-     */
-    @JsonSerialize(using = ToStringSerializer.class)
-    @ApiModelProperty(value = "创建部门")
-    private String createDept;
-
-    /**
      * 创建时间
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
@@ -56,12 +49,6 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(value = "更新时间")
     @TableField(fill = FieldFill.UPDATE)
     private Date updateAt;
-
-    /**
-     * 状态[1:正常]
-     */
-    @ApiModelProperty(value = "业务状态")
-    private String status;
 
     /**
      * 状态[0:未删除,1:删除]
