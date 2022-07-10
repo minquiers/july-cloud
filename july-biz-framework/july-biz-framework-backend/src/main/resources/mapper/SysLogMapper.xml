@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.july.cloud.framework.backend.mapper.SysLogMapper">
+
+    <resultMap id="BaseResultMap" type="com.july.cloud.framework.backend.entity.SysLogEntity">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="CHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="serviceId" column="service_id" jdbcType="VARCHAR"/>
+            <result property="remoteAddr" column="remote_addr" jdbcType="VARCHAR"/>
+            <result property="userAgent" column="user_agent" jdbcType="VARCHAR"/>
+            <result property="requestUri" column="request_uri" jdbcType="VARCHAR"/>
+            <result property="method" column="method" jdbcType="VARCHAR"/>
+            <result property="params" column="params" jdbcType="VARCHAR"/>
+            <result property="time" column="time" jdbcType="BIGINT"/>
+            <result property="exception" column="exception" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="CHAR"/>
+            <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+            <result property="createAt" column="create_at" jdbcType="TIMESTAMP"/>
+            <result property="updateAt" column="update_at" jdbcType="TIMESTAMP"/>
+            <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,type,title,
+        service_id,remote_addr,user_agent,
+        request_uri,method,params,
+        time,exception,is_deleted,
+        create_by,create_at,update_at,
+        update_by
+    </sql>
+</mapper>

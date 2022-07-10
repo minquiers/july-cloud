@@ -3,20 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>july-tools</artifactId>
+        <artifactId>july-biz-framework</artifactId>
         <groupId>com.july.cloud</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>july-tool-monitor</artifactId>
-
+    <artifactId>july-biz-framework-backend</artifactId>
 
     <dependencies>
-        <!-- SpringBoot Admin -->
         <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-server</artifactId>
+            <groupId>com.july.cloud</groupId>
+            <artifactId>july-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.july.cloud</groupId>
+            <artifactId>july-starter-mybatisplus</artifactId>
         </dependency>
         <!-- SpringCloud Alibaba Nacos -->
         <dependency>
@@ -33,10 +35,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- Spring Security -->
+        <!-- mysql -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
 
