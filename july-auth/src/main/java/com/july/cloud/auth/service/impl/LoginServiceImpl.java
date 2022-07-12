@@ -33,7 +33,7 @@ public class LoginServiceImpl implements ILoginService {
     public Map<String, Object> login(LoginBodyDTO form) {
 
         String username = form.getUsername();
-        if (StringUtils.isNotBlank(username)) {
+        if (StringUtils.isBlank(username) && (StringUtils.isNotBlank(form.getEmail()) || StringUtils.isNotBlank(form.getPhone()))) {
             username = remoteUserService.findUsername(form.getEmail(), form.getPhone()).getData();
         }
 

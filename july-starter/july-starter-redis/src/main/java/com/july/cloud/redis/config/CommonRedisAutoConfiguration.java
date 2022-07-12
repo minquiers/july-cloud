@@ -1,5 +1,11 @@
 package com.july.cloud.redis.config;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.july.cloud.core.utils.StringUtils;
 import com.july.cloud.redis.cache.RedisUtil;
 import com.july.cloud.redis.config.properties.RedisConfigurationProperties;
@@ -15,7 +21,8 @@ import org.springframework.data.redis.connection.*;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -34,11 +41,23 @@ public class CommonRedisAutoConfiguration {
     @Bean(name = "redisTemplate")
     @ConditionalOnMissingBean(name = "redisTemplate")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        // key 序列化
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        // 设置序列化
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(
+                Object.class);
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.activateDefaultTyping(LaissezFaireSubTypeValidator.instance ,ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        jackson2JsonRedisSerializer.setObjectMapper(om);
+        // 配置redisTemplate
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String, Object>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
+        RedisSerializer<?> stringSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringSerializer);// key序列化
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);// value序列化
+        redisTemplate.setHashKeySerializer(stringSerializer);// Hash key序列化
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);// Hash value序列化
+        redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
 
@@ -48,10 +67,10 @@ public class CommonRedisAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnProperty(value = "spring.redis.enabled" , havingValue = "true")
+    @ConditionalOnProperty(value = "spring.redis.enabled", havingValue = "true")
     public RedisConnectionFactory connectionFactory() {
         JedisPoolConfig poolConfig = new JedisPoolConfig();
-        if(null != redisConfigurationProperties.getPool()) {
+        if (null != redisConfigurationProperties.getPool()) {
             poolConfig.setMaxTotal(redisConfigurationProperties.getPool().getMaxActive());
             poolConfig.setMaxIdle(redisConfigurationProperties.getPool().getMaxIdle());
             poolConfig.setMaxWaitMillis(redisConfigurationProperties.getPool().getMaxWait());

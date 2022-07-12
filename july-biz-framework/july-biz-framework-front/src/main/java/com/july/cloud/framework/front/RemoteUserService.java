@@ -12,7 +12,7 @@ public interface RemoteUserService {
 
 
     @GetMapping("/username")
-    R<String> findUsername(@RequestParam(required = false) String email, @RequestParam(required = false) String phone);
+    R<String> findUsername(@RequestParam(value = "email", required = false) String email, @RequestParam(value = "phone", required = false) String phone);
 
     @GetMapping("/names/{username}")
     R<UserInfo> findInfoByUsername(@PathVariable("username") String username);

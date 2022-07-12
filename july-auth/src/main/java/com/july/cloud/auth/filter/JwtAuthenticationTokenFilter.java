@@ -28,6 +28,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Autowired
     private RedisUtil redisUtil;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -44,8 +45,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             Claims claims = JwtUtils.parseToken(token);
             userId = JwtUtils.getUserId(claims);
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("token非法");
+            log.error(e.getMessage(), e);
+            throw new LoginException("token非法");
         }
         //从redis中获取用户信息
         String redisKey = "login:" + userId;

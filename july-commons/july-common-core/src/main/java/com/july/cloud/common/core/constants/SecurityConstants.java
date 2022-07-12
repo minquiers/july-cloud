@@ -15,6 +15,16 @@ public class SecurityConstants {
     public static final String DETAILS_USERNAME = "username";
 
     /**
+     * 权限范围
+     */
+    public static final String SCP = "scp";
+
+    /**
+     * 到期
+     */
+    public static final String EXPIRATION = "expiration";
+
+    /**
      * 授权信息字段
      */
     public static final String AUTHORIZATION_HEADER = "Authorization";
