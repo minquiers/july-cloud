@@ -2,6 +2,7 @@ package com.july.cloud.auth.service.impl;
 
 import com.july.cloud.auth.dto.LoginBodyDTO;
 import com.july.cloud.auth.service.ILoginService;
+import com.july.cloud.common.core.constants.CacheConstants;
 import com.july.cloud.common.core.constants.SecurityConstants;
 import com.july.cloud.common.core.utils.JwtUtils;
 import com.july.cloud.common.security.model.LoginUser;
@@ -51,7 +52,7 @@ public class LoginServiceImpl implements ILoginService {
         claims.put(SecurityConstants.DETAILS_USER_ID, loginUser.getId());
         claims.put(SecurityConstants.DETAILS_USERNAME, loginUser.getUsername());
         String token = JwtUtils.createToken(claims);
-        redisUtil.set("login:" + loginUser.getId(), loginUser);
+        redisUtil.set(CacheConstants.LOGIN_TOKEN_KEY + loginUser.getId(), loginUser);
         Map<String, Object> result = new HashMap<>();
         result.put("token", token);
         return result;

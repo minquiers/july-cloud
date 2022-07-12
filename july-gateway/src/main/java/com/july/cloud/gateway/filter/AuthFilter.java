@@ -53,8 +53,8 @@ public class AuthFilter implements GlobalFilter, Ordered {
         if (claims == null) {
             return unauthorizedResponse(exchange, "令牌已过期或验证不正确！");
         }
-        String userkey = JwtUtils.getUserKey(claims);
-        boolean islogin = redisUtil.exists(getTokenKey(userkey));
+        String userId = JwtUtils.getUserId(claims);
+        boolean islogin = redisUtil.exists(getTokenKey(userId));
         if (!islogin) {
             return unauthorizedResponse(exchange, "登录状态已过期");
         }
@@ -65,9 +65,9 @@ public class AuthFilter implements GlobalFilter, Ordered {
         }
 
         // 设置用户信息到请求
-        addHeader(mutate, SecurityConstants.USER_KEY, userkey);
-        addHeader(mutate, SecurityConstants.DETAILS_USER_ID, userid);
-        addHeader(mutate, SecurityConstants.DETAILS_USERNAME, username);
+        addHeader(mutate, SecurityConstants.AUTHORIZATION_HEADER, token);
+       /* addHeader(mutate, SecurityConstants.DETAILS_USER_ID, userid);
+        addHeader(mutate, SecurityConstants.DETAILS_USERNAME, username);*/
         // 内部请求来源参数清除
         removeHeader(mutate, SecurityConstants.FROM_SOURCE);
         return chain.filter(exchange.mutate().request(mutate.build()).build());
