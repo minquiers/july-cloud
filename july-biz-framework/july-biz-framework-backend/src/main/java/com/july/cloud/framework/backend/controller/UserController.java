@@ -4,6 +4,7 @@ import com.july.cloud.common.core.domain.R;
 import com.july.cloud.framework.backend.dto.SysUserDTO;
 import com.july.cloud.framework.backend.service.ISysUserRoleService;
 import com.july.cloud.framework.backend.service.ISysUserService;
+import com.july.cloud.framework.backend.vo.SysUserVO;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class UserController {
 
     /**
      * 添加用户
+     *
      * @param userDTO 用户信息
      * @return 用户id
      */
@@ -35,18 +37,20 @@ public class UserController {
 
     /**
      * 更新用户信息
+     *
      * @param userDTO 用户信息
      * @return R
      */
     //@SysLog("更新用户信息")
     @PutMapping
     //@PreAuthorize("@pms.hasPermission('sys_user_edit')")
-    public R<String> updateUser( @RequestBody SysUserDTO userDTO) {
+    public R<String> updateUser(@RequestBody SysUserDTO userDTO) {
         return R.ok(sysUserService.updateUser(userDTO));
     }
 
     /**
      * 用户角色关联
+     *
      * @param userDTO 用户信息
      * @return 用户id
      */
@@ -56,6 +60,16 @@ public class UserController {
     public R userRoleRel(@RequestBody SysUserDTO userDTO) {
         sysUserRoleService.userRoleRel(userDTO);
         return R.ok();
+    }
+
+    @GetMapping("/username")
+    public R<String> findUsername(@RequestParam(required = false) String email, @RequestParam(required = false) String phone) {
+        return R.ok(sysUserService.findUsername(email, phone));
+    }
+
+    @GetMapping("/names/{username}")
+    public R<SysUserVO> findInfoByUsername(@PathVariable("username") String username) {
+        return R.ok(sysUserService.findInfoByUsername(username));
     }
 
 }

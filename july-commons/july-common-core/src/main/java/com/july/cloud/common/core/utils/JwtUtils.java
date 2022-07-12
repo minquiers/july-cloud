@@ -37,27 +37,6 @@ public class JwtUtils {
     }
 
     /**
-     * 根据令牌获取用户标识
-     *
-     * @param token 令牌
-     * @return 用户ID
-     */
-    public static String getUserKey(String token) {
-        Claims claims = parseToken(token);
-        return getValue(claims, SecurityConstants.USER_KEY);
-    }
-
-    /**
-     * 根据令牌获取用户标识
-     *
-     * @param claims 身份信息
-     * @return 用户ID
-     */
-    public static String getUserKey(Claims claims) {
-        return getValue(claims, SecurityConstants.USER_KEY);
-    }
-
-    /**
      * 根据令牌获取用户ID
      *
      * @param token 令牌

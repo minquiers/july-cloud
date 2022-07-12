@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>july-common-core</module>
+        <module>july-common-security</module>
     </modules>
 
 

@@ -3,6 +3,7 @@ package com.july.cloud.framework.backend.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.july.cloud.framework.backend.dto.SysUserDTO;
 import com.july.cloud.framework.backend.entity.SysUserEntity;
+import com.july.cloud.framework.backend.vo.SysUserVO;
 
 /**
 * @author Minquiers
@@ -25,4 +26,18 @@ public interface ISysUserService extends IService<SysUserEntity> {
      */
     String updateUser(SysUserDTO userDTO);
 
+    /**
+     * 查询用户名
+     * @param email
+     * @param phone
+     * @return
+     */
+    String findUsername(String email, String phone);
+
+    /**
+     * 根据用户名查询用户信息
+     * @param username
+     * @return
+     */
+    SysUserVO findInfoByUsername(String username);
 }

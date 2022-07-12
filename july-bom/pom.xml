@@ -265,6 +265,11 @@
             </dependency>
             <dependency>
                 <groupId>com.july.cloud</groupId>
+                <artifactId>july-common-security</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.july.cloud</groupId>
                 <artifactId>july-starter-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -276,6 +281,11 @@
             <dependency>
                 <groupId>com.july.cloud</groupId>
                 <artifactId>july-starter-mybatisplus</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.july.cloud</groupId>
+                <artifactId>july-biz-framework-front</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

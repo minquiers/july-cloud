@@ -7,6 +7,8 @@ import com.july.cloud.framework.backend.dto.SysRoleDTO;
 import com.july.cloud.framework.backend.entity.SysRoleEntity;
 import com.july.cloud.framework.backend.vo.SysRoleVO;
 
+import java.util.List;
+
 /**
 * @author Minquiers
 * @description 针对表【sys_role(系统角色表)】的数据库操作Service
@@ -35,4 +37,12 @@ public interface ISysRoleService extends IService<SysRoleEntity> {
      * @return
      */
     IPage<SysRoleVO> get(Page page, SysRoleDTO roleDTO);
+
+
+    /**
+     * 根据用户id查询角色
+     * @param userId
+     * @return
+     */
+    List<SysRoleVO> findByUserId(String userId);
 }
