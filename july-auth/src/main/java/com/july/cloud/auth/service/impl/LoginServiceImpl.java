@@ -4,8 +4,9 @@ import com.july.cloud.auth.dto.LoginBodyDTO;
 import com.july.cloud.auth.service.ILoginService;
 import com.july.cloud.common.core.constants.CacheConstants;
 import com.july.cloud.common.core.constants.SecurityConstants;
-import com.july.cloud.common.core.utils.JwtUtils;
 import com.july.cloud.common.security.model.LoginUser;
+import com.july.cloud.common.security.properties.JwtProperties;
+import com.july.cloud.common.security.util.JwtUtils;
 import com.july.cloud.core.exception.service.LoginException;
 import com.july.cloud.core.utils.StringUtils;
 import com.july.cloud.framework.front.RemoteUserService;
@@ -21,6 +22,9 @@ import java.util.Map;
 
 @Service
 public class LoginServiceImpl implements ILoginService {
+
+    @Autowired
+    private JwtProperties jwtProperties;
 
     @Autowired
     private RemoteUserService remoteUserService;
@@ -51,8 +55,8 @@ public class LoginServiceImpl implements ILoginService {
         Map<String, Object> claims = new HashMap<>();
         claims.put(SecurityConstants.DETAILS_USER_ID, loginUser.getId());
         claims.put(SecurityConstants.DETAILS_USERNAME, loginUser.getUsername());
-        String token = JwtUtils.createToken(claims);
-        redisUtil.set(CacheConstants.LOGIN_TOKEN_KEY + loginUser.getId(), loginUser);
+        String token = JwtUtils.createExpirationToken(claims);
+        redisUtil.setEx(CacheConstants.LOGIN_TOKEN_KEY + loginUser.getId(), loginUser , jwtProperties.getExpiration() / 1000);
         Map<String, Object> result = new HashMap<>();
         result.put("token", token);
         return result;

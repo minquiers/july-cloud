@@ -16,9 +16,30 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!-- java-jwt -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+        <!-- july-start-core -->
+        <dependency>
+            <groupId>com.july.cloud</groupId>
+            <artifactId>july-starter-core</artifactId>
+        </dependency>
+        <!-- july-start-redis -->
+        <dependency>
+            <groupId>com.july.cloud</groupId>
+            <artifactId>july-starter-redis</artifactId>
+        </dependency>
+        <!-- jaxb-api -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <!-- SpringBoot Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 </project>

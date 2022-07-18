@@ -1,6 +1,6 @@
-package com.july.cloud.auth.config;
+package com.july.cloud.common.security.config;
 
-import com.july.cloud.auth.filter.JwtAuthenticationTokenFilter;
+import com.july.cloud.common.security.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

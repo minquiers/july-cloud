@@ -1,19 +1,31 @@
-package com.july.cloud.common.core.utils;
+package com.july.cloud.common.security.util;
 
-import com.july.cloud.common.core.constants.SecurityConstants;
-import com.july.cloud.common.core.constants.TokenConstants;
+import com.july.cloud.common.security.constants.SecurityConstants;
+import com.july.cloud.common.security.properties.JwtProperties;
 import com.july.cloud.core.text.Convert;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
  * Jwt工具类
  */
+@EnableConfigurationProperties(JwtProperties.class)
+@Data
+@Slf4j
+@Configuration
 public class JwtUtils {
-    public static String secret = TokenConstants.SECRET;
+
+    @Autowired
+    private static JwtProperties jwtProperties;
 
     /**
      * 从数据声明生成令牌
@@ -22,7 +34,29 @@ public class JwtUtils {
      * @return 令牌
      */
     public static String createToken(Map<String, Object> claims) {
-        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, secret).compact();
+        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, jwtProperties.getSecret()).compact();
+        return token;
+    }
+
+    /**
+     * 从数据声明生成令牌(超时s)
+     *
+     * @param claims 数据声明
+     * @return 令牌
+     */
+    public static String createExpirationToken(Map<String, Object> claims) {
+        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, jwtProperties.getSecret()).setExpiration(new Date(new Date().getTime() + jwtProperties.getExpiration())).compact();
+        return token;
+    }
+
+    /**
+     * 从数据声明生成令牌(超时s)
+     *
+     * @param claims 数据声明
+     * @return 令牌
+     */
+    public static String createExpirationToken(Map<String, Object> claims , Date expiration) {
+        String token = Jwts.builder().setClaims(claims).signWith(SignatureAlgorithm.HS512, jwtProperties.getSecret()).setExpiration(expiration).compact();
         return token;
     }
 
@@ -33,7 +67,7 @@ public class JwtUtils {
      * @return 数据声明
      */
     public static Claims parseToken(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(jwtProperties.getSecret()).parseClaimsJws(token).getBody();
     }
 
     /**

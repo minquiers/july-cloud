@@ -15,6 +15,11 @@ public class SecurityConstants {
     public static final String DETAILS_USERNAME = "username";
 
     /**
+     * 用户角色
+     */
+    public static final String DETAILS_USER_ROLE = "user_role";
+
+    /**
      * 权限范围
      */
     public static final String SCP = "scp";

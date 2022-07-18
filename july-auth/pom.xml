@@ -50,10 +50,6 @@
         </dependency>
         <dependency>
             <groupId>com.july.cloud</groupId>
-            <artifactId>july-starter-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.july.cloud</groupId>
             <artifactId>july-common-security</artifactId>
         </dependency>
     </dependencies>

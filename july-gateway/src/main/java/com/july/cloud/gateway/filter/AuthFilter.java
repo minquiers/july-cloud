@@ -2,7 +2,6 @@ package com.july.cloud.gateway.filter;
 
 import com.july.cloud.common.core.constants.CacheConstants;
 import com.july.cloud.common.core.constants.SecurityConstants;
-import com.july.cloud.common.core.constants.TokenConstants;
 import com.july.cloud.common.core.utils.JwtUtils;
 import com.july.cloud.common.core.utils.ServletUtils;
 import com.july.cloud.core.utils.StringUtils;
