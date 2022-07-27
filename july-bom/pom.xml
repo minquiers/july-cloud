@@ -36,7 +36,7 @@
         <postgresql.connector.version>42.4.0</postgresql.connector.version>
         <redisson.version>3.17.4</redisson.version>
         <jedis.version>3.9.0</jedis.version>
-        <fastjson2.version>2.0.8</fastjson2.version>
+        <fastjson2.version>2.0.10</fastjson2.version>
         <hutool-all.version>5.8.4</hutool-all.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-io.version>2.11.0</commons-io.version>

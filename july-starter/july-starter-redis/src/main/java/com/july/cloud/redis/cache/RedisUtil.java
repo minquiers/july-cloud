@@ -14,7 +14,6 @@ import java.util.function.Supplier;
 /**
  * redis 工具
  *
- * @author jdeng
  */
 @Getter
 @SuppressWarnings("unchecked")

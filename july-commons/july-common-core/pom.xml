@@ -12,6 +12,10 @@
     <artifactId>july-common-core</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.july.cloud</groupId>
+            <artifactId>july-starter-core</artifactId>
+        </dependency>
         <!-- Spring Web -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -41,6 +45,11 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
+        </dependency>
+        <!-- fastjson2 -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
         </dependency>
     </dependencies>
 

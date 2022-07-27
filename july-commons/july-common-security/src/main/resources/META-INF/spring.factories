@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.july.cloud.common.security.util.JwtUtils,\
+com.july.cloud.common.security.utils.JwtUtils,\
 com.july.cloud.common.security.config.SecurityConfig,\
 com.july.cloud.common.security.filter.JwtAuthenticationTokenFilter

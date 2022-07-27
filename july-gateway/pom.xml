@@ -62,6 +62,11 @@
             <groupId>com.july.cloud</groupId>
             <artifactId>july-starter-redis</artifactId>
         </dependency>
+        <!-- july-common-security -->
+        <dependency>
+            <groupId>com.july.cloud</groupId>
+            <artifactId>july-common-security</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

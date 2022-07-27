@@ -1,4 +1,4 @@
-package com.july.cloud.common.core.constants;
+package com.july.cloud.common.security.constants;
 
 /**
  * 权限相关通用常量

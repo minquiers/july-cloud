@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * 锁客户端
  *
- * @author jdeng
  */
 public interface RedisLockClient {
 

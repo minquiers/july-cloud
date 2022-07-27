@@ -1,4 +1,4 @@
-package com.july.cloud.common.security.util;
+package com.july.cloud.common.security.utils;
 
 import com.july.cloud.common.security.constants.SecurityConstants;
 import com.july.cloud.common.security.properties.JwtProperties;
