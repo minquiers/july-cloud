@@ -1,10 +1,8 @@
 package com.july.cloud.gateway.filter;
 
-import com.july.cloud.common.core.constants.CacheConstants;
-import com.july.cloud.common.security.constants.SecurityConstants;
-import com.july.cloud.common.security.constants.TokenConstants;
-import com.july.cloud.common.security.utils.JwtUtils;
 import com.july.cloud.common.core.utils.ServletUtils;
+import com.july.cloud.common.security.constants.SecurityConstants;
+import com.july.cloud.common.security.utils.JwtUtils;
 import com.july.cloud.core.utils.StringUtils;
 import com.july.cloud.gateway.config.properties.IgnoreWhiteProperties;
 import com.july.cloud.redis.cache.RedisUtil;
@@ -95,17 +93,17 @@ public class AuthFilter implements GlobalFilter, Ordered {
      * 获取缓存key
      */
     private String getTokenKey(String token) {
-        return CacheConstants.LOGIN_TOKEN_KEY + token;
+        return SecurityConstants.LOGIN_TOKEN_KEY + token;
     }
 
     /**
      * 获取请求token
      */
     private String getToken(ServerHttpRequest request) {
-        String token = request.getHeaders().getFirst(TokenConstants.AUTHENTICATION);
+        String token = request.getHeaders().getFirst(SecurityConstants.AUTHORIZATION_HEADER);
         // 如果前端设置了令牌前缀，则裁剪掉前缀
-        if (StringUtils.isNotEmpty(token) && token.startsWith(TokenConstants.PREFIX)) {
-            token = token.replaceFirst(TokenConstants.PREFIX, StringUtils.EMPTY);
+        if (StringUtils.isNotEmpty(token) && token.startsWith(SecurityConstants.PREFIX)) {
+            token = token.replaceFirst(SecurityConstants.PREFIX, StringUtils.EMPTY);
         }
         return token;
     }

@@ -1,6 +1,7 @@
 package com.july.cloud.common.security.filter;
 
 import cn.hutool.core.util.StrUtil;
+import com.july.cloud.common.security.constants.SecurityConstants;
 import com.july.cloud.common.security.model.LoginUser;
 import com.july.cloud.common.security.utils.JwtUtils;
 import com.july.cloud.core.exception.service.LoginException;
@@ -49,11 +50,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             throw new LoginException("token非法");
         }
         //从redis中获取用户信息
-        String redisKey = "login:" + userId;
+        String redisKey = SecurityConstants.LOGIN_TOKEN_KEY + userId;
         LoginUser loginUser = redisUtil.get(redisKey);
         if (null == loginUser) {
             throw new LoginException("用户未登录");
         }
+        //判断权限
+
         //存入SecurityContextHolder
         //TODO 获取权限信息封装到Authentication中
         UsernamePasswordAuthenticationToken authenticationToken =
