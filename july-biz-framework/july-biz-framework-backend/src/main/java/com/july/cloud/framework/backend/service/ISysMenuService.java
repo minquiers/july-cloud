@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.july.cloud.framework.backend.dto.SysMenuDTO;
 import com.july.cloud.framework.backend.entity.SysMenuEntity;
 
+import java.util.List;
+
 /**
 * @author Minquiers
 * @description 针对表【sys_menu(菜单权限表)】的数据库操作Service
@@ -24,4 +26,11 @@ public interface ISysMenuService extends IService<SysMenuEntity> {
      * @return
      */
     String updateMenu(SysMenuDTO sysMenuDTO);
+
+    /**
+     * 角色查询菜单
+     * @param collect
+     * @return
+     */
+    List<SysMenuEntity> findByRoles(List<String> collect);
 }

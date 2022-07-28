@@ -67,9 +67,9 @@ public class UserController {
         return R.ok(sysUserService.findUsername(email, phone));
     }
 
-    @GetMapping("/names/{username}")
-    public R<SysUserVO> findInfoByUsername(@PathVariable("username") String username) {
-        return R.ok(sysUserService.findInfoByUsername(username));
+    @GetMapping("/login/{username}")
+    public R<SysUserVO> loginFindUserInfo(@PathVariable("username") String username) {
+        return R.ok(sysUserService.loginFindUserInfo(username));
     }
 
 }

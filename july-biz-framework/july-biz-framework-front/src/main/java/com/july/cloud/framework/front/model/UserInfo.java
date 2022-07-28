@@ -11,4 +11,5 @@ public class UserInfo {
     private String password;
     private String lockFlag;
     private Set<String> roles;
+    private Set<String> permissions;
 }

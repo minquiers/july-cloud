@@ -20,10 +20,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        R<UserInfo> r = remoteUserService.findInfoByUsername(username);
+        R<UserInfo> r = remoteUserService.loginFindUserInfo(username);
         if (null != r && null != r.getData()) {
             UserInfo userInfo = r.getData();
-            return new LoginUser(userInfo.getId() , userInfo.getUsername(), userInfo.getPassword(),"9".equals(userInfo.getLockFlag()) , userInfo.getRoles());
+            return new LoginUser(userInfo.getId() , userInfo.getUsername(), userInfo.getPassword(),"9".equals(userInfo.getLockFlag()) , userInfo.getRoles() , userInfo.getPermissions());
         }
         return null;
     }

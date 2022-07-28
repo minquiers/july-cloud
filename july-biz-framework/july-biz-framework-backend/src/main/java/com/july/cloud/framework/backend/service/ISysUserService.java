@@ -39,5 +39,5 @@ public interface ISysUserService extends IService<SysUserEntity> {
      * @param username
      * @return
      */
-    SysUserVO findInfoByUsername(String username);
+    SysUserVO loginFindUserInfo(String username);
 }

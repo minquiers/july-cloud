@@ -6,8 +6,11 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.july.cloud.core.utils.StringUtils;
 import com.july.cloud.framework.backend.convert.SysUserConvert;
 import com.july.cloud.framework.backend.dto.SysUserDTO;
+import com.july.cloud.framework.backend.entity.SysMenuEntity;
+import com.july.cloud.framework.backend.entity.SysRoleEntity;
 import com.july.cloud.framework.backend.entity.SysUserEntity;
 import com.july.cloud.framework.backend.mapper.SysUserMapper;
+import com.july.cloud.framework.backend.service.ISysMenuService;
 import com.july.cloud.framework.backend.service.ISysRoleService;
 import com.july.cloud.framework.backend.service.ISysUserService;
 import com.july.cloud.framework.backend.vo.SysRoleVO;
@@ -32,6 +35,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
 
     @Autowired
     private ISysRoleService sysRoleService;
+
+    @Autowired
+    private ISysMenuService sysMenuService;
 
     @Override
     public String insertUser(SysUserDTO userDTO) {
@@ -63,7 +69,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     }
 
     @Override
-    public SysUserVO findInfoByUsername(String username) {
+    public SysUserVO loginFindUserInfo(String username) {
         LambdaQueryWrapper<SysUserEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysUserEntity::getUsername, username);
         List<SysUserEntity> list = baseMapper.selectList(queryWrapper);
@@ -72,6 +78,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
             List<SysRoleVO> roleVOList = sysRoleService.findByUserId(sysUserVO.getId());
             if (CollectionUtil.isNotEmpty(roleVOList)) {
                 sysUserVO.setRoles(roleVOList.stream().map(SysRoleVO::getRoleName).collect(Collectors.toSet()));
+                List<SysMenuEntity> menuEntities = sysMenuService.findByRoles(roleVOList.stream().map(SysRoleEntity::getId).distinct().collect(Collectors.toList()));
+                if (CollectionUtil.isNotEmpty(menuEntities)) {
+                    sysUserVO.setPermissions(menuEntities.stream().map(SysMenuEntity::getPermission).collect(Collectors.toSet()));
+                }
             }
             return sysUserVO;
         }

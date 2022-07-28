@@ -24,6 +24,8 @@ public class LoginUser implements UserDetails {
     private boolean isLocked;
     private Set<String> roles;
 
+    private Set<String> permissions;
+
 
 
     @JsonIgnore
@@ -33,16 +35,6 @@ public class LoginUser implements UserDetails {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role);
             return grantedAuthority;
         }).collect(Collectors.toList());
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return username;
     }
 
     @Override

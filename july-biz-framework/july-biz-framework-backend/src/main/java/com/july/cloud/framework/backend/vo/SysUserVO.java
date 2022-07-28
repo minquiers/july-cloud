@@ -12,4 +12,6 @@ public class SysUserVO extends SysUserEntity {
 
     private Set<String> roles;
 
+    private Set<String> permissions;
+
 }
